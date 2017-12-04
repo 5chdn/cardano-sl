@@ -319,7 +319,7 @@ createKademliaInstance ::
     -> Word16 -- ^ Default port to bind to.
     -> m KademliaDHTInstance
 createKademliaInstance BaseParams {..} kp defaultPort =
-    usingLoggerName (lpRunnerTag bpLoggingParams) (startDHTInstance instConfig defaultBindAddress)
+    usingLoggerName (lpDefaultName bpLoggingParams) (startDHTInstance instConfig defaultBindAddress)
   where
     instConfig = kp {kpPeers = ordNub $ kpPeers kp ++ defaultPeers}
     defaultBindAddress = ("0.0.0.0", defaultPort)
